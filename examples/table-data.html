@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <title>table-data</title>
+        
+        <link rel="stylesheet" href="lib/example.css" type="text/css">
+        <link rel="stylesheet" href="lib/prettify.css" type="text/css">
+        
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" type="text/javascript"></script>
+        <script src="http://raw.github.com/DmitryBaranovskiy/raphael/master/raphael-min.js" type="text/javascript"></script>
+        
+        <script src="../morris.min.js" type="text/javascript"></script>
+        
+        <script src="lib/prettify.js" type="text/javascript"></script>
+        <script src="lib/example.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <h1>Reading data directly from an HTML table</h1>
+        
+        <div id="graph"></div>
+        
+        <table id="data">
+            <caption>Annual Fruit Sales</caption>
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Apples</th>
+                    <th scope="col">Oranges</th>
+                    <th scope="col">Watermelon</th>
+                    <th scope="col">Peaches</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row"></th>
+                    <td>1</td> <td>4</td> <td>2</td> <td>9</td>
+                </tr>
+                <tr>
+                    <th scope="row">2003</th>
+                    <td>2</td> <td>8</td> <td>3</td> <td>9</td>
+                </tr>
+                <tr>
+                    <th scope="row"></th>
+                    <td>3</td> <td>7</td> <td>1</td> <td>10</td>
+                </tr>
+                <tr>
+                    <th scope="row">2004</th>
+                    <td>4</td> <td>9</td> <td>5</td> <td>8</td>
+                </tr>
+                <tr>
+                    <th scope="row"></th>
+                    <td>4</td> <td>8</td> <td>6</td> <td>7</td>
+                </tr>
+                <tr>
+                    <th scope="row">2005</th>
+                    <td>3</td> <td>9</td> <td>8</td> <td>9</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <pre id="code" class="prettyprint linenums">
+var day_data = [
+    {"elapsed": "I",    "value": 34 },
+    {"elapsed": "II",   "value": 24 },
+    {"elapsed": "III",  "value": 3 },
+    {"elapsed": "IV",   "value": 12 },
+    {"elapsed": "V",    "value": 13 },
+    {"elapsed": "VI",   "value": 22 },
+    {"elapsed": "VII",  "value": 5 },
+    {"elapsed": "VIII", "value": 26 },
+    {"elapsed": "IX",   "value": 12 },
+    {"elapsed": "X",    "value": 19 }
+];
+
+Morris.Line({
+    element   : 'graph',
+    data      : day_data,
+    xkey      : 'elapsed',
+    ykeys     : ['value'],
+    labels    : ['value'],
+    parseTime : false
+});
+        </pre>
+    </body>
+</html>
