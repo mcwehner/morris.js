@@ -14,6 +14,8 @@
         
         <script src="lib/prettify.js" type="text/javascript"></script>
         <script src="lib/example.js" type="text/javascript"></script>
+        
+        <script src="lib/table-data.js" type="text/javascript"></script>
     </head>
     <body>
         <h1>Reading data directly from an HTML table</h1>
@@ -33,54 +35,42 @@
             </thead>
             <tbody>
                 <tr>
-                    <th scope="row"></th>
+                    <th scope="row">2002 Q3</th>
                     <td>1</td> <td>4</td> <td>2</td> <td>9</td>
                 </tr>
                 <tr>
-                    <th scope="row">2003</th>
+                    <th scope="row">2003 Q1</th>
                     <td>2</td> <td>8</td> <td>3</td> <td>9</td>
                 </tr>
                 <tr>
-                    <th scope="row"></th>
+                    <th scope="row">2003 Q3</th>
                     <td>3</td> <td>7</td> <td>1</td> <td>10</td>
                 </tr>
                 <tr>
-                    <th scope="row">2004</th>
+                    <th scope="row">2004 Q1</th>
                     <td>4</td> <td>9</td> <td>5</td> <td>8</td>
                 </tr>
                 <tr>
-                    <th scope="row"></th>
+                    <th scope="row">2004 Q3</th>
                     <td>4</td> <td>8</td> <td>6</td> <td>7</td>
                 </tr>
                 <tr>
-                    <th scope="row">2005</th>
+                    <th scope="row">2005 Q1</th>
                     <td>3</td> <td>9</td> <td>8</td> <td>9</td>
                 </tr>
             </tbody>
         </table>
         
         <pre id="code" class="prettyprint linenums">
-var day_data = [
-    {"elapsed": "I",    "value": 34 },
-    {"elapsed": "II",   "value": 24 },
-    {"elapsed": "III",  "value": 3 },
-    {"elapsed": "IV",   "value": 12 },
-    {"elapsed": "V",    "value": 13 },
-    {"elapsed": "VI",   "value": 22 },
-    {"elapsed": "VII",  "value": 5 },
-    {"elapsed": "VIII", "value": 26 },
-    {"elapsed": "IX",   "value": 12 },
-    {"elapsed": "X",    "value": 19 }
-];
+var fruitData = getDataFrom("#data");
 
-Morris.Line({
-    element   : 'graph',
-    data      : day_data,
-    xkey      : 'elapsed',
-    ykeys     : ['value'],
-    labels    : ['value'],
-    parseTime : false
-});
+console.log(fruitData);
+
+Morris.Line(
+    $.extend(fruitData, {
+        element : 'graph'
+    })
+);
         </pre>
     </body>
 </html>
