@@ -8,10 +8,10 @@ function getDataFrom (selector)
     
     $("thead th", selector).each(function ()
     {
-        var key = $(this).text();
+        var column = $(this).text();
         
-        if (key.match(RE_NOT_BLANK)) {
-            columns.push(key);
+        if (column.match(RE_NOT_BLANK)) {
+            columns.push(column);
             ykeys.push("col" + (columns.length - 1));
         }
     });
